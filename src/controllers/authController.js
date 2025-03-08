@@ -3,10 +3,10 @@ const { generateToken } = require('../config/jwt.js');
 const User = require('../models/userModel.js');
 
 const login = async (req, res) => {
-  const { mobile_phone, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ mobile_phone });
+    const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
